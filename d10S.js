@@ -22,6 +22,30 @@ const opponentDown = new Image()
 opponentDown.src = "./images/opponentDown.png"
 
 
+// Sounds
+
+const golGolgol = new sound("./sounds/golGolgol.opus")
+
+
+function sound (src){
+
+this.sound = document.createElement("audio");
+this.sound.src = src;
+this.sound.setAttribute("preload", "auto");
+this.sound.setAttribute("controls", "none");
+this.sound.style.display = "none";
+document.body.appendChild(this.sound);
+this.play = function(){
+this.sound.play();
+};
+this.stop = function(){
+this.sound.pause();
+};
+}
+
+
+
+
 // Constants
 
 const canvas = document.querySelector("canvas")
@@ -56,19 +80,21 @@ const checkCollitions = () => {
     if (portero.contains(pelota)){
         score.haParado--
         pelota.isMoving = false
-        pelota.x = 60
+        pelota.x = 130
      
     }
     else if (porteria.contains(pelota)){
         score.haMetido++
         pelota.isMoving = false
-        pelota.x = 60
+        pelota.x = 130
+        golGolgol.play()
     
        }        
     else  if (merengue.contains(pelota)){
+        console.log('colliding ')
         score.haParado--
         pelota.isMoving = false
-        pelota.x = 60
+        pelota.x = 130
      
     }
 
@@ -81,95 +107,95 @@ const checkCollitions = () => {
 
 const scoreUpdate = () => {   
     if(score.haParado === 3){
-        ctx.drawImage(messiCaraScore, 215, 10, 40, 20) 
-        ctx.drawImage(messiCaraScore, 255, 10, 40, 20)
-        ctx.drawImage(messiCaraScore, 175, 10, 40, 20)
+        ctx.drawImage(messiCaraScore, 430, 40, 90, 90) 
+        ctx.drawImage(messiCaraScore, 475, 40, 90, 90)
+        ctx.drawImage(messiCaraScore, 520, 40, 90, 90)
     }
     if(score.haParado === 2){
-        ctx.drawImage(messiCaraScore, 215, 10, 40, 20) 
-        ctx.drawImage(messiCaraScore, 255, 10, 40, 20)
+        ctx.drawImage(messiCaraScore, 430, 40, 90, 90) 
+        ctx.drawImage(messiCaraScore, 475, 40, 90, 90)
     }
-    
+
     if(score.haParado === 1){
-        ctx.drawImage(messiCaraScore, 255, 10, 40, 20)
+        ctx.drawImage(messiCaraScore, 430, 40, 90, 90)
        
     }
     if(score.haMetido === 1){
-        ctx.drawImage(ballScoreUp, 15, 10, 10, 5) 
-        
+        ctx.drawImage(ballScoreUp, 25, 40, 20, 20) 
+
     }
     if(score.haMetido === 2){
-        ctx.drawImage(ballScoreUp, 15, 10, 10, 5) 
-        ctx.drawImage(ballScoreUp, 25, 10, 10, 5)
+        ctx.drawImage(ballScoreUp, 25, 40, 20, 20) 
+        ctx.drawImage(ballScoreUp, 45, 40, 20, 20)
         
     }
     
     if(score.haMetido === 3){
-        ctx.drawImage(ballScoreUp, 15, 10, 10, 5) 
-        ctx.drawImage(ballScoreUp, 25, 10, 10, 5)
-        ctx.drawImage(ballScoreUp, 35, 10, 10, 5)
+        ctx.drawImage(ballScoreUp, 25, 40, 20, 20) 
+        ctx.drawImage(ballScoreUp, 45, 40, 20, 20)
+        ctx.drawImage(ballScoreUp, 65, 40, 20, 20)
        
     }
     if(score.haMetido === 4){
-        ctx.drawImage(ballScoreUp, 15, 10, 10, 5) 
-        ctx.drawImage(ballScoreUp, 25, 10, 10, 5)
-        ctx.drawImage(ballScoreUp, 35, 10, 10, 5)
-        ctx.drawImage(ballScoreUp, 45, 10, 10, 5)
+        ctx.drawImage(ballScoreUp, 25, 40, 20, 20) 
+        ctx.drawImage(ballScoreUp, 45, 40, 20, 20)
+        ctx.drawImage(ballScoreUp, 65, 40, 20, 20)
+        ctx.drawImage(ballScoreUp, 85, 40, 20, 20)
     }
     if(score.haMetido === 5){
-        ctx.drawImage(ballScoreUp, 15, 10, 10, 5) 
-        ctx.drawImage(ballScoreUp, 25, 10, 10, 5)
-        ctx.drawImage(ballScoreUp, 35, 10, 10, 5)
-        ctx.drawImage(ballScoreUp, 45, 10, 10, 5)
-        ctx.drawImage(ballScoreUp, 55, 10, 10, 5)
-        merengue.draw()
+        ctx.drawImage(ballScoreUp, 25, 40, 20, 20) 
+        ctx.drawImage(ballScoreUp, 45, 40, 20, 20)
+        ctx.drawImage(ballScoreUp, 65, 40, 20, 20)
+        ctx.drawImage(ballScoreUp, 85, 40, 20, 20)
+        ctx.drawImage(ballScoreUp, 105, 40, 20, 20)
+      merengue.draw()
         
     }
     
     if(score.haMetido === 6){
-        ctx.drawImage(ballScoreUp, 15, 10, 10, 5) 
-        ctx.drawImage(ballScoreUp, 25, 10, 10, 5)
-        ctx.drawImage(ballScoreUp, 35, 10, 10, 5)
-        ctx.drawImage(ballScoreUp, 45, 10, 10, 5)
-        ctx.drawImage(ballScoreUp, 55, 10, 10, 5)
-        ctx.drawImage(ballScoreUp, 15, 20, 10, 5)
-        merengue.draw()
+        ctx.drawImage(ballScoreUp, 25, 40, 20, 20) 
+        ctx.drawImage(ballScoreUp, 45, 40, 20, 20)
+        ctx.drawImage(ballScoreUp, 65, 40, 20, 20)
+        ctx.drawImage(ballScoreUp, 85, 40, 20, 20)
+        ctx.drawImage(ballScoreUp, 105, 40, 20, 20)
+        ctx.drawImage(ballScoreUp, 25, 60, 20, 20)
+      merengue.draw()
     }
 
     if(score.haMetido === 7){
-        ctx.drawImage(ballScoreUp, 15, 10, 10, 5) 
-        ctx.drawImage(ballScoreUp, 25, 10, 10, 5)
-        ctx.drawImage(ballScoreUp, 35, 10, 10, 5)
-        ctx.drawImage(ballScoreUp, 45, 10, 10, 5)
-        ctx.drawImage(ballScoreUp, 55, 10, 10, 5)
-        ctx.drawImage(ballScoreUp, 15, 20, 10, 5)
-        ctx.drawImage(ballScoreUp, 25, 20, 10, 5)
-        merengue.draw()
+        ctx.drawImage(ballScoreUp, 25, 40, 20, 20) 
+        ctx.drawImage(ballScoreUp, 45, 40, 20, 20)
+        ctx.drawImage(ballScoreUp, 65, 40, 20, 20)
+        ctx.drawImage(ballScoreUp, 85, 40, 20, 20)
+        ctx.drawImage(ballScoreUp, 105, 40, 20, 20)
+        ctx.drawImage(ballScoreUp, 25, 60, 20, 20)
+        ctx.drawImage(ballScoreUp, 45, 60, 20, 20)
+      merengue.draw()
     }
     
     if(score.haMetido === 8){
-        ctx.drawImage(ballScoreUp, 15, 10, 10, 5) 
-        ctx.drawImage(ballScoreUp, 25, 10, 10, 5)
-        ctx.drawImage(ballScoreUp, 35, 10, 10, 5)
-        ctx.drawImage(ballScoreUp, 45, 10, 10, 5)
-        ctx.drawImage(ballScoreUp, 55, 10, 10, 5)
-        ctx.drawImage(ballScoreUp, 15, 20, 10, 5)
-        ctx.drawImage(ballScoreUp, 25, 20, 10, 5)
-        ctx.drawImage(ballScoreUp, 35, 20, 10, 5)
-        merengue.draw()
+        ctx.drawImage(ballScoreUp, 25, 40, 20, 20) 
+        ctx.drawImage(ballScoreUp, 45, 40, 20, 20)
+        ctx.drawImage(ballScoreUp, 65, 40, 20, 20)
+        ctx.drawImage(ballScoreUp, 85, 40, 20, 20)
+        ctx.drawImage(ballScoreUp, 105, 40, 20, 20)
+        ctx.drawImage(ballScoreUp, 25, 60, 20, 20)
+        ctx.drawImage(ballScoreUp, 45, 60, 20, 20)
+        ctx.drawImage(ballScoreUp, 65, 60, 20, 20)
+       merengue.draw()
     }
 
     if(score.haMetido === 9){
-        ctx.drawImage(ballScoreUp, 15, 10, 10, 5) 
-        ctx.drawImage(ballScoreUp, 25, 10, 10, 5)
-        ctx.drawImage(ballScoreUp, 35, 10, 10, 5)
-        ctx.drawImage(ballScoreUp, 45, 10, 10, 5)
-        ctx.drawImage(ballScoreUp, 55, 10, 10, 5)
-        ctx.drawImage(ballScoreUp, 15, 20, 10, 5)
-        ctx.drawImage(ballScoreUp, 25, 20, 10, 5)
-        ctx.drawImage(ballScoreUp, 35, 20, 10, 5)
-        ctx.drawImage(ballScoreUp, 45, 20, 10, 5)
-        merengue.draw()
+        ctx.drawImage(ballScoreUp, 25, 40, 20, 20) 
+        ctx.drawImage(ballScoreUp, 45, 40, 20, 20)
+        ctx.drawImage(ballScoreUp, 65, 40, 20, 20)
+        ctx.drawImage(ballScoreUp, 85, 40, 20, 20)
+        ctx.drawImage(ballScoreUp, 105, 40, 20, 20)
+        ctx.drawImage(ballScoreUp, 25, 60, 20, 20)
+        ctx.drawImage(ballScoreUp, 45, 60, 20, 20)
+        ctx.drawImage(ballScoreUp, 65, 60, 20, 20)
+        ctx.drawImage(ballScoreUp, 85, 60, 20, 20)
+       merengue.draw()
     
     }
     
@@ -201,10 +227,10 @@ const update = () => {
     portero.draw()
     pelota.draw()
     porteria.draw()
-    checkCollitions()
     scoreUpdate()
+    checkCollitions()
     finishGame()
-    console.log(portero.contains(pelota))
+    //console.log(merengue.contains(pelota))
 
     requestAnimationFrame(update)
 }
@@ -220,10 +246,10 @@ const score = {
 
 class Player {
     constructor(x, color){
-        this.x = x + 40,
-        this.y = canvas.height/2 -15,
-        this.w = 10,
-        this.h = 20,
+        this.x = x + 90,
+        this.y = canvas.height/2 -75,
+        this.w = 60,
+        this.h = 90,
         this.color = color,
         this.speed = 15
         this.shotting = false
@@ -241,11 +267,11 @@ let messi = new Player(0, "blue")
 
 class Goalkeeper {
     constructor(x){
-        this.x = x,
-        this.y = canvas.height/2 -5,
-        this.w = 20,
-        this.h = 10,
-        this.speed = 0.5
+        this.x = x + 370,
+        this.y = canvas.height/2,
+        this.w = 40,
+        this.h = 65,
+        this.speed = 1,5
         this.move = false
         this.direction = "up"
 }
@@ -270,9 +296,9 @@ class Goalkeeper {
             this.y += this.speed
         }
 
-        if ( this.y <= 45){
+        if ( this.y <=170){
             this.direction = "down" 
-        } else if (this.y >= 100){ 
+        } else if (this.y >= 360){ 
             this.direction = "up"
         }      
     }
@@ -293,12 +319,12 @@ let portero = new Goalkeeper(270)
 
 class Ball {
     constructor(x, color){
-        this.x = x + 60,
+        this.x = x + 130,
         this.y = canvas.height/2 - 2.5,
-        this.w = 10,
-        this.h = 5,
+        this.w = 20,
+        this.h = 20,
         this.color = color,
-        this.speed = 1,
+        this.speed = 3,
         this.directionX = "left"
         this.directionY = "up",
         this.friction = 0.7,
@@ -327,10 +353,10 @@ let pelota = new Ball (0, "red")
 
 class Goal{
     constructor(x, color){
-        this.x = x + 295,
-        this.y = 45,
+        this.x = x + 690,
+        this.y = 240 - 50,
         this.w = 5,
-        this.h = 65,
+        this.h = 220,
         this.color = color, 
         this.speed = 0.5
         this.move = false
@@ -357,10 +383,10 @@ let porteria = new Goal (0, "white")
 class Opponent {
     constructor(x){
         this.x = x,
-        this.y = canvas.height/2 -45,
-        this.w = 20,
-        this.h = 10,
-        this.speed = 0.2
+        this.y = canvas.height/2 -200,
+        this.w = 50,
+        this.h = 75,
+        this.speed = 0.75
         this.move = false
         this.direction = "up"
 }
@@ -385,9 +411,10 @@ class Opponent {
             this.y += this.speed
         }
 
-        if ( this.y <= 45){
+        if ( this.y <= 170){
             this.direction = "down" 
-        } else if (this.y >= 100){ 
+            console.log('moving up')
+        } else if (this.y >= 360){ 
             this.direction = "up"
         }      
     }
@@ -398,11 +425,12 @@ class Opponent {
           (this.x + this.w > b.x) &&
           (this.y < b.y + b.h) &&
           (this.y + this.h > b.y)
+          
       } 
 
 }
 
-let merengue = new Opponent (170)
+let merengue = new Opponent (450)
 
 
 // Buttons
