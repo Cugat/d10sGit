@@ -48,8 +48,6 @@ this.sound.pause();
 }
 
 
-
-
 // Constants
 
 const canvas = document.querySelector("canvas")
