@@ -25,7 +25,11 @@ opponentDown.src = "./images/opponentDown.png"
 // Sounds
 
 const golGolgol = new sound("./sounds/golGolgol.opus")
-
+const gameOverSound = new sound("./sounds/gameOverSound.wav")
+const golSencillo = new sound("./sounds/golSencillo.opus")
+const touchGoalkeeper = new sound("./sounds/touchGoalkeeper.wav")
+const touchOpponent = new sound("./sounds/touchOpponent.wav")
+const encaraMessi = new sound("./sounds/encaraMessi.opus")
 
 function sound (src){
 
@@ -59,11 +63,14 @@ ctx.imageSmoothingEnabled = false
 const finishGame = () =>{
     if(score.haParado <= 0){
         canvas.classList.add("hidden");
-        youLost.classList.remove("hidden");
+        youLost.classList.remove("hidden")
+        gameOverSound.play();
     }else if
     (score.haMetido >= 10){
         canvas.classList.add("hidden");
-        youWin.classList.remove("hidden");}
+        youWin.classList.remove("hidden");
+        encaraMessi.play();
+    }
 
  }
 
@@ -81,13 +88,14 @@ const checkCollitions = () => {
         score.haParado--
         pelota.isMoving = false
         pelota.x = 130
-     
+        touchGoalkeeper.play()
+
     }
     else if (porteria.contains(pelota)){
         score.haMetido++
         pelota.isMoving = false
         pelota.x = 130
-        golGolgol.play()
+        golSencillo.play()
     
        }        
     else  if (merengue.contains(pelota)){
@@ -95,6 +103,7 @@ const checkCollitions = () => {
         score.haParado--
         pelota.isMoving = false
         pelota.x = 130
+        touchOpponent.play()
      
     }
 
