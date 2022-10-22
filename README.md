@@ -18,9 +18,15 @@ came to light October the 21th.
 All the credits go to José, Carles, Pau and my team mates from Ironhack
 Web Development Autumn 2022 Course.  
 
-Contact
+**Contact**
 José - Ironhack Barcelona 
 email: zzcugat@gmail.com
+
+**Online Game**
+https://cugat.github.io/d10sGit/d10S.html
+
+
+
 
 
 
